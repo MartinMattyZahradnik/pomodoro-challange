@@ -19,7 +19,7 @@ const initialState = {
   activeSessions: null
 };
 
-export default function configureStore() {
+export const configureStore = () => {
   const middlewares: Middleware[] = [];
 
   if (process.env.NODE_ENV === "development") {
@@ -34,4 +34,6 @@ export default function configureStore() {
     initialState,
     applyMiddleware(...middlewares)
   );
-}
+};
+
+export const store = configureStore();

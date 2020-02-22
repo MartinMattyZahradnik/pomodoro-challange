@@ -7,11 +7,11 @@ import PomodoroForm from "components/PomodoroForm";
 const StyledApplicationWrapper = styled.div`
   display: flex;
   justify-content: center;
-  padding-top: 10%;
+  padding-top: 5%;
 `;
 
 const StyledApplication = styled.div`
-  max-width: ${({ theme }) => theme.breakpoints.sm};
+  max-width: ${({ theme }) => theme.breakpoints.md};
 `;
 
 class App extends Component {
