@@ -3,6 +3,7 @@ import styled from "styled-components";
 
 // Components
 import PomodoroForm from "components/PomodoroForm";
+import PomodoroList from "components/PomodoroList";
 
 const StyledApplicationWrapper = styled.div`
   display: flex;
@@ -20,6 +21,7 @@ class App extends Component {
       <StyledApplicationWrapper>
         <StyledApplication className="app">
           <PomodoroForm />
+          <PomodoroList />
         </StyledApplication>
       </StyledApplicationWrapper>
     );

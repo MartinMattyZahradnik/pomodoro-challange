@@ -22,6 +22,7 @@ import {
 
 const StyledPomodoroForm = styled.form`
   width: ${({ theme }) => theme.breakpoints.md};
+  margin-bottom: 4.5rem;
 `;
 
 const StyledPickerInputWrapper = styled.div`
@@ -95,6 +96,7 @@ const PomodoroForm = () => {
       <Grid container direction="row">
         <StyledLabelWrapper>
           <TextField
+            required
             id="label"
             label="Type pomodoro label"
             value={label}

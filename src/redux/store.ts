@@ -9,12 +9,20 @@ import { createLogger } from "redux-logger";
 import sessionReducer from "redux/session/sessionReducer";
 import pomodoroReducer from "redux/pomodoro/pomodoroReducer";
 
+import { ISessionReducerType } from "redux/session/sessionTypes";
+import { IPomodoro } from "redux/pomodoro/pomodoroTypes";
+
+export interface IState {
+  pomodoros: { [key: string]: IPomodoro };
+  activeSessions: ISessionReducerType;
+}
+
 export const rootReducer = combineReducers({
   pomodoros: pomodoroReducer,
   session: sessionReducer
 });
 
-const initialState = {
+const initialState: IState = {
   pomodoros: {},
   activeSessions: null
 };

@@ -41,13 +41,16 @@ export default createGlobalStyle`
     text-decoration: none;
   }
   
+  .MuiInputBase-root {
+    font-size: 1.6rem;
+  }
+
+  .MuiFormLabel-root {
+    font-size: 1.2rem;
+  }
+
   .MuiTextField-root {
     width: 100%;
-  }
-  
-  .MuiMenuItem-root {
-    font-size: 1.4rem;
-    justify-content: center;
   }
   
   .MuiInputBase-multiline {
@@ -55,9 +58,8 @@ export default createGlobalStyle`
   }
 
   .MuiTableCell-root {
-    font-size: 1.2rem;
+    font-size: 1.4rem;
     &.MuiTableCell-head  {
-      font-size: 1.4rem;
       font-weight: 800;
     }
   }
