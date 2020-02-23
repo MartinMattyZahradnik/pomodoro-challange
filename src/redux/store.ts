@@ -2,19 +2,28 @@ import {
   createStore,
   applyMiddleware,
   Middleware,
-  combineReducers
+  combineReducers,
+  compose
 } from "redux";
+import createSagaMiddleware from "redux-saga";
 import { createLogger } from "redux-logger";
 
-import sessionReducer from "redux/session/sessionReducer";
-import pomodoroReducer from "redux/pomodoro/pomodoroReducer";
+import rootSaga from "redux/rootSaga";
+
+// Reducers
+import sessionReducer, {
+  initialState as sessionReducerInitialState
+} from "redux/session/sessionReducer";
+import pomodoroReducer, {
+  initialState as pomodoroReducerInitialState
+} from "redux/pomodoro/pomodoroReducer";
 
 import { ISessionReducerType } from "redux/session/sessionTypes";
 import { IPomodoro } from "redux/pomodoro/pomodoroTypes";
 
 export interface IState {
   pomodoros: { [key: string]: IPomodoro };
-  activeSessions: ISessionReducerType;
+  session: ISessionReducerType;
 }
 
 export const rootReducer = combineReducers({
@@ -23,12 +32,13 @@ export const rootReducer = combineReducers({
 });
 
 const initialState: IState = {
-  pomodoros: {},
-  activeSessions: null
+  pomodoros: pomodoroReducerInitialState,
+  session: sessionReducerInitialState
 };
 
 export const configureStore = () => {
-  const middlewares: Middleware[] = [];
+  const sagaMiddleware = createSagaMiddleware();
+  const middlewares: Middleware[] = [sagaMiddleware];
 
   if (process.env.NODE_ENV === "development") {
     const logger = createLogger({
@@ -37,11 +47,14 @@ export const configureStore = () => {
     middlewares.push(logger);
   }
 
-  return createStore(
+  const store = createStore(
     rootReducer,
     initialState,
-    applyMiddleware(...middlewares)
+    compose(applyMiddleware(...middlewares))
   );
+
+  sagaMiddleware.run(rootSaga);
+  return store;
 };
 
 export const store = configureStore();

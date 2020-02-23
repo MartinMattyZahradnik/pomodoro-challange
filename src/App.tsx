@@ -4,6 +4,7 @@ import styled from "styled-components";
 // Components
 import PomodoroForm from "components/PomodoroForm";
 import PomodoroList from "components/PomodoroList";
+import Timer from "components/Timer";
 
 const StyledApplicationWrapper = styled.div`
   display: flex;
@@ -19,8 +20,9 @@ class App extends Component {
   render() {
     return (
       <StyledApplicationWrapper>
-        <StyledApplication className="app">
+        <StyledApplication>
           <PomodoroForm />
+          <Timer />
           <PomodoroList />
         </StyledApplication>
       </StyledApplicationWrapper>

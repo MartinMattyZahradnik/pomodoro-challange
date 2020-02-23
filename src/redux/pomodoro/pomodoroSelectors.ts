@@ -15,3 +15,13 @@ export const selectPomodoroList = createSelector(
     return Object.values(pomodoros);
   }
 );
+
+export const selectPomodoroById = createSelector(
+  [selectPomodoros, (state: IState, id: string) => id],
+  (pomodoros = {}, id = "") => pomodoros[id]
+);
+
+export const selectPomodoroLabel = createSelector(
+  [selectPomodoroById],
+  pomodoro => (pomodoro ? pomodoro.label : "")
+);

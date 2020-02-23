@@ -84,9 +84,12 @@ const PomodoroForm = () => {
         label,
         taskDuration,
         shortBreakDuration,
-        longBreakDuration
+        longBreakDuration,
+        isComplete: false
       })
     );
+
+    setLabel("");
   };
 
   return (

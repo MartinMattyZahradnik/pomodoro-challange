@@ -1,5 +1,20 @@
-import { SET_ACTIVE_SESSION } from "./sessionConstants";
+import { SET_ACTIVE_SESSION, INCREASE_SESSION_COUNT } from "./sessionConstants";
+import {
+  ISession,
+  SetActiveSessionAction,
+  IncreaseSessionCountAction
+} from "./sessionTypes";
 
-export const setActiveSession = () => ({
-  type: SET_ACTIVE_SESSION
+export const setActiveSession = (
+  payload: ISession
+): SetActiveSessionAction => ({
+  type: SET_ACTIVE_SESSION,
+  payload
+});
+
+export const increaseSessionCount = (
+  count: number = 1
+): IncreaseSessionCountAction => ({
+  type: INCREASE_SESSION_COUNT,
+  payload: count
 });
